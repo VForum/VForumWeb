@@ -20,7 +20,6 @@ public class LoginServiceImpl implements LoginService{
 		
 		
 			String userValid=loginDAO.userAuth(loginModel.getUserId(),loginModel.getPassword());
-			
 			return userValid;
 	}
 

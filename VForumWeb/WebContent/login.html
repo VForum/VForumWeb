@@ -1,33 +1,76 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Login Page</title>
-</head>
-<body>
-<form name="loginForm" method="post" action="login.php">
-<table width="20%" bgcolor="0099CC" align="center">
+<!DOCTYPE html> 
+<html> 
+<style> 
+    
+      
+    form { 
+        border: 45px solid #f1f1f1;
+        padding:250px; 
+    } 
+         
+    input[type=text], 
+    input[type=password] { 
+        width: 100%; 
+        padding: 12px 20px; 
+        margin: 8px 0; 
+        display: inline-block; 
+        border: 1px solid #ccc; 
+        box-sizing: border-box; 
+    } 
+         
+    .button { 
+        background-color: #4CAF50; 
+        color: white; 
+        padding: 14px 20px; 
+        margin: 50; 
+        border: none; 
+        cursor: pointer; 
+        width: 20%; 
+    } 
+     .btncncl { 
+        background-color: #f44336; 
+        padding: 14px 20px; 
+       margin-left:280px;
+        border: none; 
+        cursor: pointer; 
+        width: 8.5%; 
+    } 
+          
+    .container { 
+        padding: 30px;
+        margin-left: 250px;
+        margin-right: 250px; 
+    } 
+    /*set the forgot password text*/ 
+      
+    span.password { 
+         
+        padding-top: 16px; 
+        
+    } 
+  
+  
+</style> 
+  
+<body> 
 
-<tr>
-<td colspan=2><center><font size=4><b>HTML Login Page</b></font></center></td>
-</tr>
-
-<tr>
-<td>Username:</td>
-<td><input type="text" size=25 name="userid"></td>
-</tr>
-
-<tr>
-<td>Password:</td>
-<td><input type="Password" size=25 name="pwd"></td>
-</tr>
-
-<tr>
-<td>&nbsp;&nbsp;<input type="Reset"></td>
-<td><input type="submit" value="Login"></td>
-</tr>
-
-</table>
-</form>
-</body>
-</html>
+    <form action="login" method="post" autocomplete="off"> 
+            <div class="container"> 
+            <label><b>Username</b></label> 
+            <input type="text" placeholder="Enter Username" name="username"  required> 
+  
+            <label><b>Password</b></label> 
+            <input type="password" placeholder="Enter Password" name="password"  required> 
+  
+            <input type="submit" class="button" value="Login"/> 
+            <input type="checkbox" checked="checked" value="Remember me">
+        </div> 
+  
+        <div > 
+            <input type="reset" class="btncncl" value="Reset"/> 
+            <span class="psw">new user?<a href="registrationform.jsp">SignUp</a></span> 
+        </div> 
+    </form> 
+  
+</body> 
+</html> 

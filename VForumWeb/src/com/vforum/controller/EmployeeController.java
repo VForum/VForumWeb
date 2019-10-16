@@ -1,6 +1,9 @@
 package com.vforum.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
+
+import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,7 +49,14 @@ public class EmployeeController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		String userName=request.getParameter("user_name");
+		String password=request.getParameter("password");
+		String firstName=request.getParameter("user_name");
+		String lastName=request.getParameter("last_Name");
+		String phoneNumber=request.getParameter("phone_number");
+		String email=request.getParameter("email");
+		String desgination=request.getParameter("desgination");
+		
 		
 	}
 

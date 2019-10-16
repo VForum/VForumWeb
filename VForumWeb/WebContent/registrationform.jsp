@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -55,13 +55,13 @@ input[type=text],
 </head>
 <body>
 
-<form action="" method="post" autocomplete="off">
+<form action="employee" method="post" autocomplete="off">
  <div class="container">
 			<table style="with: 50%">
 			<h1 align="center">Employee Registration Form</h1>
 				<tr>
 					<td>UserName:</td>
-					<td><input type="text" name="username" /></td>
+					<td><input type="text" name="user_name" /></td>
 				</tr>
 				<tr>
 					<td>First Name:</td>
@@ -73,7 +73,7 @@ input[type=text],
 				</tr>
 				<tr>
 					<td>Email:</td>
-					<td><input type="text" name="username" /></td>
+					<td><input type="text" name="email" /></td>
 				</tr>
 				<tr>
 					<td>Password:</td>
@@ -81,7 +81,7 @@ input[type=text],
 				</tr>
 				<tr>
 					<td>Phone Number:</td>
-					<td><input type="text" name="address" /></td>
+					<td><input type="text" name="phone_number" /></td>
 				</tr>
 				<tr>
 					<td>Designation:</td>
@@ -95,7 +95,7 @@ input[type=text],
 				</tr>
 				<tr>
 				<td>Date Of Birth:</td>
-				<td><input type="date" value="date"/></td>
+				<td><input type="date" name="date" /></td>
 				</tr>
 				<tr>
 				<td><input type="submit" class="button" value="Submit">

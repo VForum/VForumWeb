@@ -1,8 +1,10 @@
 package com.vforum.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.vforum.helper.FactoryEmployeeDB;
+import com.vforum.model.RegisterEmployeeModel;
 import com.vforum.service.EmployeesService;
 
 /**
@@ -49,13 +52,37 @@ public class EmployeeController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userName=request.getParameter("user_name");
+		String username=request.getParameter("user_name");
 		String password=request.getParameter("password");
 		String firstName=request.getParameter("user_name");
-		String lastName=request.getParameter("last_Name");
+		String lastName=request.getParameter("last_name");
 		String phoneNumber=request.getParameter("phone_number");
 		String email=request.getParameter("email");
-		String desgination=request.getParameter("desgination");
+		String designation=request.getParameter("designation");
+		String dob=request.getParameter("date");
+		RegisterEmployeeModel model=new RegisterEmployeeModel();
+		model.setEmployeeUid(username);
+		model.setFirstName(firstName);
+		model.setPassword(password);
+		model.setLastName(lastName);
+		model.setEmail(email);
+		model.setDob(dob);
+		model.setDesignation(designation);
+		model.setPhoneNumber(phoneNumber);
+		try {
+			String outcome=employeeService.registerEmployee(model);
+			if(outcome.contentEquals("success")) {
+				RequestDispatcher dispatcher=
+						request.getRequestDispatcher("success.jsp");
+				dispatcher.forward(request,response);
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 	}

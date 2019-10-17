@@ -39,5 +39,6 @@ table, th, td {
 </tr>
 </c:forEach>
 </table>
+<a href="admin.html">Back</a> 
 </body>
 </html>

@@ -1,5 +1,5 @@
 package com.vforum.entities;
-
+//business entity class for answers
 import java.time.LocalDate;
 
 public class Answers {

@@ -63,7 +63,7 @@ public class AdminDAOImpl implements AdminDAO{
 		System.out.print("input"+postId);
 		Connection connection=ConnectionManager.openConnection();
 		PreparedStatement statement=
-				connection.prepareStatement("DELETE questions, answers FROM questions INNER JOIN answers ON questions.post_id = answers.a_post_id WHERE post_id=?");
+				connection.prepareStatement("DELETE from questions WHERE post_id=?");
 		statement.setInt(1,postId);
 		int rows=statement.executeUpdate();
 		ConnectionManager.closeConnection();

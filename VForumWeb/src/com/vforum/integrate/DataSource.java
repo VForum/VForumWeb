@@ -1,5 +1,5 @@
 package com.vforum.integrate;
-
+//class for getting database credentials
 import java.util.ResourceBundle;
 
 public class DataSource {

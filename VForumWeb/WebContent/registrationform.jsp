@@ -57,8 +57,9 @@ input[type=text],
 
 <form action="employee" method="post" autocomplete="off">
  <div class="container">
+ 			<h1 align="center">Employee Registration Form</h1>
 			<table style="with: 50%">
-			<h1 align="center">Employee Registration Form</h1>
+			
 				<tr>
 					<td>UserName:</td>
 					<td><input type="text" name="user_name" /></td>

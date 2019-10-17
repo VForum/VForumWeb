@@ -1,7 +1,6 @@
 package com.vforum.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -12,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.vforum.helper.FactoryEmployeeDB;
 import com.vforum.model.LoginModel;
@@ -23,6 +23,7 @@ import com.vforum.service.LoginService;
 @WebServlet("/login")
 public class AuthorizationController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	LoginModel loginModel=null;
 	private LoginService loginService;
     /**
      * @see HttpServlet#HttpServlet()
@@ -39,6 +40,7 @@ public class AuthorizationController extends HttpServlet {
 		// TODO Auto-generated method stub
 		super.init(config);
 		this.loginService=FactoryEmployeeDB.createLoginService();
+		this.loginModel=new LoginModel();
 	}
 
 	/**
@@ -55,10 +57,15 @@ public class AuthorizationController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
-		 //PrintWriter out = response.getWriter();
-		LoginModel loginModel=new LoginModel();
 		loginModel.setUserId(username);
+		String userName=loginModel.getUserId();
 		loginModel.setPassword(password);
+		request.setAttribute("username",userName);
+		
+		//HttpSession session = request.getSession();
+       //session.setAttribute("username",username);
+        //session.setMaxInactiveInterval(30);
+        
 	
 				String outcome=null;
 				try {
@@ -69,7 +76,7 @@ public class AuthorizationController extends HttpServlet {
 				}
 				if(outcome.contentEquals("EMPLOYEE")){
 					RequestDispatcher dispatcher=
-							request.getRequestDispatcher("employee.html");
+							request.getRequestDispatcher("employee.jsp");
 					dispatcher.forward(request,response);
 				}
 				else if(outcome.contentEquals("ADMIN")){

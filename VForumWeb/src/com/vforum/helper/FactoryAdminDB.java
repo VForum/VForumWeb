@@ -1,5 +1,5 @@
 package com.vforum.helper;
-
+//used as abstraction for admin operations
 import com.vforum.dao.AdminDAO;
 import com.vforum.dao.AdminDAOImpl;
 import com.vforum.service.AdminService;

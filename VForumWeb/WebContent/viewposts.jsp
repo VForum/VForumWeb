@@ -33,7 +33,8 @@ table, th, td {
 </tr>
 </c:forEach>
  </table>
-<a href="deleteposts.html">Delete posts</a> 
+<a href="deleteposts.html">Delete posts</a> <br>
+<a href="admin.html">Back</a> 
 
 </body>
 </html>

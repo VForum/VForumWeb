@@ -1,5 +1,5 @@
 package com.vforum.dao;
-
+// AdminDao interface 
 import java.sql.SQLException;
 import java.util.List;
 

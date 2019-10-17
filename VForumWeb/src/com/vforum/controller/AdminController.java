@@ -94,6 +94,8 @@ public class AdminController extends HttpServlet {
 			request.setAttribute("outcome",outcome);
 			if(outcome.contentEquals("success")) {
 				
+				List<PostModel> postModelList=adminService.retrievePosts();
+				request.setAttribute("postModelList", postModelList);
 				RequestDispatcher dispatcher=
 						request.getRequestDispatcher("viewposts.jsp");
 				

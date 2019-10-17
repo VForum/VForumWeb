@@ -1,5 +1,5 @@
 package com.vforum.helper;
-
+//used for abstraction of employee operations
 import com.vforum.dao.EmployeesDAO;
 import com.vforum.dao.EmployeesDAOImpl;
 import com.vforum.dao.LoginDAO;

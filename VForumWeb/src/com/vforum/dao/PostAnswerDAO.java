@@ -1,5 +1,5 @@
 package com.vforum.dao;
-
+//interface for posting answer dao
 import java.sql.SQLException;
 
 import com.vforum.entities.Answers;

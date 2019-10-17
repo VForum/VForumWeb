@@ -75,7 +75,7 @@ private AdminDAO adminDAO;
 
 	@Override
 	public String deleteQuestion(int postId) {
-		
+		System.out.print("input"+postId);
 		String result="fail";
 		try {
 			boolean stored=adminDAO.deleteQuestion(postId);

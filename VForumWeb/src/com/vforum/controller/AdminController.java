@@ -1,6 +1,10 @@
 package com.vforum.controller;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.vforum.helper.FactoryAdminDB;
+import com.vforum.model.EmployeeModel;
+import com.vforum.model.PostModel;
 import com.vforum.service.AdminService;
 
 /**
@@ -39,8 +45,41 @@ public class AdminController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String action=request.getParameter("action");
+		if(action.contentEquals("viewemployees")) {
+		List<EmployeeModel> employeesModelList=adminService.retrieveEmployees();
+		request.setAttribute("employeesModelList", employeesModelList);
+		
+		if(!employeesModelList.isEmpty()) {
+			
+			RequestDispatcher dispatcher=
+					request.getRequestDispatcher("viewemployees.jsp");
+			dispatcher.forward(request,response);
+		}else {
+			
+			RequestDispatcher dispatcher=
+					request.getRequestDispatcher("noemployeedetails.jsp");
+			dispatcher.forward(request,response);
+		}
+		}
+		if(action.contentEquals("viewposts"))
+		{
+			List<PostModel> postModelList=adminService.retrievePosts();
+			request.setAttribute("postModelList", postModelList);
+			if(!postModelList.isEmpty()) {
+				
+				RequestDispatcher dispatcher=
+						request.getRequestDispatcher("viewposts.jsp");
+			
+				dispatcher.forward(request,response);
+			}else {
+				
+				RequestDispatcher dispatcher=
+						request.getRequestDispatcher("noposts.jsp");
+				dispatcher.forward(request,response);
+			}
+			}
+	
 	}
 
 	/**
@@ -48,7 +87,25 @@ public class AdminController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+			int postId=Integer.parseInt(request.getParameter("post_id"));
+			
+			String outcome=adminService.deleteQuestion(postId);
+			request.setAttribute("outcome",outcome);
+			if(outcome.contentEquals("success")) {
+				
+				RequestDispatcher dispatcher=
+						request.getRequestDispatcher("viewposts.jsp");
+				
+			
+				dispatcher.forward(request,response);
+			}else {
+				
+				RequestDispatcher dispatcher=
+						request.getRequestDispatcher("noposts.jsp");
+				dispatcher.forward(request,response);
+			}
+			}
 	}
 
-}
+

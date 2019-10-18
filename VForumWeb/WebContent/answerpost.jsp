@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -55,51 +56,23 @@ input[type=text],
 </head>
 <body>
 
-<form action="employee" method="post" autocomplete="off">
+<form action="postanswer" method="post" autocomplete="off">
  <div class="container">
- 			<h1 align="center">Employee Registration Form</h1>
+ 			
 			<table style="with: 50%">
+			<tr>
+			<td> Enter post id:</td>
+			<td><input type="number" name="postid" required/></td>
+			</tr>
 			
 				<tr>
-					<td>UserName:</td>
-					<td><input type="text" name="user_name" required/></td>
+					<td>Enter Answer:</td>
+					<td><textarea rows="4" cols="50" name="textarea"></textarea></td>
 				</tr>
+				
+				
 				<tr>
-					<td>First Name:</td>
-					<td><input type="text" name="first_name" required/></td>
-				</tr>
-				<tr>
-					<td>Last Name:</td>
-					<td><input type="text" name="last_name" required/></td>
-				</tr>
-				<tr>
-					<td>Email:</td>
-					<td><input type="text" name="email" required/></td>
-				</tr>
-				<tr>
-					<td>Password:</td>
-					<td><input type="password" name="password" required/></td>
-				</tr>
-				<tr>
-					<td>Phone Number:</td>
-					<td><input type="text" name="phone_number" required/></td>
-				</tr>
-				<tr>
-					<td>Designation:</td>
-					<td><select name="designation" id="select" required>
-					<option value="select">select</option>
-  					<option value="Project Manager">Project Manager</option>
-  					<option value="Associate-Engineer">Associate-Engineer</option>
-  					<option value="Trainee Engineer">Trainee Engineer</option>
-  					<option value="System Analyst">System Analyst</option>
-					</select></td>
-				</tr>
-				<tr>
-				<td>Date Of Birth:</td>
-				<td><input type="date" name="date" required/></td>
-				</tr>
-				<tr>
-				<td><input type="submit" class="button" value="Submit">
+				<td><input type="submit" class="button" value="submit">
 				<td><input type="reset" class="btncncl" value="Reset"></td> 
 				</tr>
 				</table>

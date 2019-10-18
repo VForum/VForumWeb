@@ -2,6 +2,7 @@ package com.vforum.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.Servlet;
@@ -11,11 +12,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.vforum.helper.FactoryEmployeeDB;
+import com.vforum.model.AnswerModel;
+import com.vforum.model.EmployeeModel;
 import com.vforum.model.LoginModel;
+import com.vforum.model.PostModel;
+import com.vforum.model.PostQuestionModel;
 import com.vforum.model.RegisterEmployeeModel;
 import com.vforum.service.EmployeesService;
+import com.vforum.service.PostQuestionService;
 
 /**
  * Servlet implementation class EmployeeController
@@ -23,8 +30,8 @@ import com.vforum.service.EmployeesService;
 @WebServlet("/employee")
 public class EmployeeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	LoginModel loginModel=null;
 	private EmployeesService employeeService=null;
+	private PostQuestionService postQuestionService=null;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -39,16 +46,65 @@ public class EmployeeController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 		this.employeeService=FactoryEmployeeDB.createEmployeesService();
-		this.loginModel=new LoginModel();
+		
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username=(String)request.getAttribute("username");
-		String u=(String)request.getParameter(loginModel.getUserId());
-		response.getWriter().print(u);
+		HttpSession session=request.getSession(false);
+		LoginModel loginModel=new LoginModel();
+		if(session!=null) {
+			String name=(String)session.getAttribute("username");
+			response.getWriter().print(name);
+			loginModel.setUserId(name);
+		}
+		String action=request.getParameter("action");
+		if(action.contentEquals("logout"))
+		{
+			RequestDispatcher dispatcher=
+					request.getRequestDispatcher("login.html");
+			dispatcher.forward(request,response);
+		}
+		
+		if(action.contentEquals("postquestion")) {
+			RequestDispatcher dispatcher1=
+					request.getRequestDispatcher("postquestion.jsp");
+			dispatcher1.forward(request,response);
+		}
+		if(action.contentEquals("viewprofile")) {
+			List<EmployeeModel> models=employeeService.getProfile(loginModel);
+			request.setAttribute("profile",models);
+			RequestDispatcher dispatcher=
+					request.getRequestDispatcher("profile.jsp");
+			dispatcher.forward(request,response);
+		}
+		if(action.contentEquals("viewposts"))
+		{
+			List<PostModel> postModelList=employeeService.retrievePosts();
+			request.setAttribute("postModelList", postModelList);
+			if(!postModelList.isEmpty()) {
+				
+				RequestDispatcher dispatcher=
+						request.getRequestDispatcher("viewpostsemp.jsp");
+			
+				dispatcher.forward(request,response);
+			}else {
+				
+				RequestDispatcher dispatcher=
+						request.getRequestDispatcher("noposts.jsp");
+				dispatcher.forward(request,response);
+			}
+		}
+			if(action.contentEquals("viewanswers"))
+			{
+				
+				RequestDispatcher dispatcher=
+						request.getRequestDispatcher("viewanswers.jsp");
+				dispatcher.forward(request,response);
+			}
+				
 		
 	}
 
@@ -56,9 +112,11 @@ public class EmployeeController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//String action=request.getParameter("action");
+		
 		String username=request.getParameter("user_name");
 		String password=request.getParameter("password");
-		String firstName=request.getParameter("user_name");
+		String firstName=request.getParameter("first_name");
 		String lastName=request.getParameter("last_name");
 		String phoneNumber=request.getParameter("phone_number");
 		String email=request.getParameter("email");
@@ -87,6 +145,7 @@ public class EmployeeController extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		
 		
 	}

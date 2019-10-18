@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.vforum.helper.FactoryEmployeeDB;
 import com.vforum.model.LoginModel;
+import com.vforum.model.PostQuestionModel;
 import com.vforum.service.LoginService;
 
 /**
@@ -58,15 +59,10 @@ public class AuthorizationController extends HttpServlet {
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
 		loginModel.setUserId(username);
-		String userName=loginModel.getUserId();
 		loginModel.setPassword(password);
-		request.setAttribute("username",userName);
-		
-		//HttpSession session = request.getSession();
-       //session.setAttribute("username",username);
-        //session.setMaxInactiveInterval(30);
-        
-	
+		request.setAttribute("username",username);
+		HttpSession session = request.getSession();
+        session.setAttribute("username",username);
 				String outcome=null;
 				try {
 					outcome = loginService.userAuthenticationService(loginModel);
@@ -75,9 +71,11 @@ public class AuthorizationController extends HttpServlet {
 					e.printStackTrace();
 				}
 				if(outcome.contentEquals("EMPLOYEE")){
+					
 					RequestDispatcher dispatcher=
 							request.getRequestDispatcher("employee.jsp");
-					dispatcher.forward(request,response);
+					dispatcher.include(request,response);;
+					
 				}
 				else if(outcome.contentEquals("ADMIN")){
 					RequestDispatcher dispatcher=

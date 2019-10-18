@@ -33,7 +33,9 @@ table, th, td {
 </tr>
 </c:forEach>
  </table>
-<a href="deleteposts.html">Delete posts</a> <br>
+<a href="answerpost.jsp">Answer post</a> <br>
+<a href="employee?action=viewanswers">View Answers</a> <br>
+<a href="employee.jsp">Back</a> <br>
 
 
 </body>

@@ -79,7 +79,12 @@ public class AdminController extends HttpServlet {
 				dispatcher.forward(request,response);
 			}
 			}
-	
+		if(action.contentEquals("logout"))
+		{
+			RequestDispatcher dispatcher=
+					request.getRequestDispatcher("login.html");
+			dispatcher.forward(request,response);
+		}
 	}
 
 	/**

@@ -1,84 +1,31 @@
-<!--  <!DOCTYPE html> 
-<html> 
-<style> 
-    
-      
-    form { 
-        border: 45px solid #f1f1f1;
-        padding:250px; 
-    } 
-         
-    input[type=text], 
-    input[type=password] { 
-        width: 100%; 
-        padding: 12px 20px; 
-        margin: 8px 0; 
-        display: inline-block; 
-        border: 1px solid #ccc; 
-        box-sizing: border-box; 
-    } 
-         
-    .button { 
-        background-color: #4CAF50; 
-        color: white; 
-        padding: 14px 20px; 
-        margin: 50; 
-        border: none; 
-        cursor: pointer; 
-        width: 20%; 
-    } 
-     .btncncl { 
-        background-color: #f44336; 
-        padding: 14px 20px; 
-       margin-left:280px;
-        border: none; 
-        cursor: pointer; 
-        width: 8.5%; 
-    } 
-          
-    .container { 
-        padding: 30px;
-        margin-left: 250px;
-        margin-right: 250px; 
-    } 
-    /*set the forgot password text*/ 
-      
-    span.password { 
-         
-        padding-top: 16px; 
-        
-    } 
-  
-  
-</style> 
-  
-<body> 
-
-    <form action="login" method="post" autocomplete="off"> 
-            <div class="container"> 
-            <label><b>Username</b></label> 
-            <input type="text" placeholder="Enter Username" name="username"  required> 
-  
-            <label><b>Password</b></label> 
-            <input type="password" placeholder="Enter Password" name="password"  required> 
-  
-            <input type="submit" class="button" value="Login"/> 
-        </div> 
-  
-        <div > 
-            <input type="reset" class="btncncl" value="Reset"/> 
-            <span class="psw">new user?<a href="registrationform.jsp">SignUp</a></span> 
-        </div> 
-    </form> 
-  
-</body> 
-</html> 
---><!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
+
+input{
+
+margin-top: -50px;
+margin-left: 700px;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 30px;
+padding-bottom: 30px;
+color:BLACK;
+background-color: ;
+
+}
+h1{
+text-align: center;
+font-size:90px;
+text-decoration: underline;
+color:black;
+margin-top: 200px;
+}
+
+ 
 
 /* Full-width input fields */
 input[type=text], input[type=password] {
@@ -119,7 +66,10 @@ button:hover {
   position: relative;
 }
 
-
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
 
 .container {
   padding: 16px;
@@ -137,8 +87,8 @@ span.psw {
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
-  width: 50%; /* Full width */
-  height: 70%; /* Full height */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -192,14 +142,21 @@ span.psw {
      float: none;
   }
   .cancelbtn {
-     width: 50%;
+     width: 100%;
   }
 }
 </style>
 </head>
 <body background="images/bg.jpg">
 
+<body  background="images/bg.jpg">
+<h1> Welcome To VForum</h1><br>
 
+
+
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Enter</button>
+
+<div id="id01" class="modal">
   
   <form class="modal-content animate" action="login" method="post" autocomplete="off">
     <div class="imgcontainer">
@@ -220,7 +177,7 @@ span.psw {
 
     <div class="container" style="background-color:#f1f1f1">
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Reset</button>
-      <span class="psw">NewUser?<a href="registrationform.jsp">signup</span>
+      <span class="psw">NewUser?<a href="#">signup</span>
     </div>
   </form>
 </div>

@@ -50,11 +50,11 @@ input[type=text],
        margin-left:180px;
         border: none; 
         cursor: pointer; 
-        width: 10%; 
+        width: 30%; 
     } 
 </style>
 </head>
-<body>
+<body background="images/bg.jpg">
 
 <form action="postquestion" method="post" autocomplete="off">
  <div class="container">

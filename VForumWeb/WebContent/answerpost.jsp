@@ -54,7 +54,7 @@ input[type=text],
     } 
 </style>
 </head>
-<body>
+<body background="images/bg.jpg">
 
 <form action="postanswer" method="post" autocomplete="off">
  <div class="container">

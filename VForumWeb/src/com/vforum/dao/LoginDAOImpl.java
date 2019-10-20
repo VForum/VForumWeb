@@ -13,6 +13,7 @@ public class LoginDAOImpl implements LoginDAO {
 	public String userAuth(String userId, String password)throws ClassNotFoundException,SQLException {
 			String role="";
 			Connection connection=ConnectionManager.openConnection();
+			System.out.println("hlo");
 			String query2="select role from user_credentials where username=? and user_password=?";
 			PreparedStatement preparedStatement2=connection.prepareStatement(query2);
 			preparedStatement2.setString(1, userId);

@@ -13,7 +13,7 @@ table, th, td {
 }
 </style>
 </head>
-<body>
+<body background="images/bg.jpg">
 <h1 align="center">Posts Details</h1>
 
 <table align="center">

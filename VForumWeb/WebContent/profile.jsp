@@ -13,7 +13,7 @@ table, th, td {
 }
 </style>
 </head>
-<body>
+<body background="images/bg.jpg">
 <h1 align="center">My Profile</h1>
 
 <table align="center">
@@ -39,6 +39,6 @@ table, th, td {
 </tr>
 </c:forEach>
 </table>
-<a href="employee.jsp">Back</a> 
+<a href="employee.jsp"><b>Back</b></a> 
 </body>
 </html>

@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script type="text/javascript" src="validate.js"></script>
 <title>Registration Form</title>
 <style>
 input[type=text], 
@@ -30,7 +31,7 @@ input[type=text],
         margin-left:100px;
         border: none; 
         cursor: pointer; 
-        width: 40%; 
+        width: 50%; 
     } 
     .container { 
     	
@@ -49,13 +50,14 @@ input[type=text],
        margin-left:180px;
         border: none; 
         cursor: pointer; 
-        width: 10%; 
+        width: 50%; 
     } 
 </style>
 </head>
-<body>
+<body background="images/bg.jpg">
 
-<form action="employee" method="post" autocomplete="off">
+<form action="employee" method="post" autocomplete="off" >
+ 
  <div class="container">
  			<h1 align="center">Employee Registration Form</h1>
 			<table style="with: 50%">
@@ -99,7 +101,7 @@ input[type=text],
 				<td><input type="date" name="date" required/></td>
 				</tr>
 				<tr>
-				<td><input type="submit" class="button" value="Submit">
+				<td><input type="submit" class="button" value="Submit" name="registrationform" onsubmit="return(validate());"/>
 				<td><input type="reset" class="btncncl" value="Reset"></td> 
 				</tr>
 				</table>

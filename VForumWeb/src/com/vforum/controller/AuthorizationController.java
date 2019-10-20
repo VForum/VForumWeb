@@ -58,8 +58,10 @@ public class AuthorizationController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
+	
 		loginModel.setUserId(username);
 		loginModel.setPassword(password);
+		
 		request.setAttribute("username",username);
 		HttpSession session = request.getSession();
         session.setAttribute("username",username);

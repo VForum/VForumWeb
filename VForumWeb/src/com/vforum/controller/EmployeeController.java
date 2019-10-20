@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.vforum.dao.EmployeesDAO;
+import com.vforum.entities.Answers;
 import com.vforum.helper.FactoryEmployeeDB;
 import com.vforum.model.AnswerModel;
 import com.vforum.model.EmployeeModel;
@@ -32,6 +34,7 @@ public class EmployeeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private EmployeesService employeeService=null;
 	private PostQuestionService postQuestionService=null;
+	private EmployeesDAO employeesDAO=null;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -99,9 +102,19 @@ public class EmployeeController extends HttpServlet {
 		}
 			if(action.contentEquals("viewanswers"))
 			{
-				
+				int postId=Integer.parseInt(request.getParameter("post_id"));
+				List<AnswerModel> answersList=employeeService.retrieveAnswers(loginModel, postId);
+				request.setAttribute("answersList", answersList);
+				if(!answersList.isEmpty())
+				{
 				RequestDispatcher dispatcher=
-						request.getRequestDispatcher("viewanswers.jsp");
+						request.getRequestDispatcher("view.jsp");
+				dispatcher.forward(request,response);
+}
+			}else
+			{
+				RequestDispatcher dispatcher=
+						request.getRequestDispatcher("noanswers.jsp");
 				dispatcher.forward(request,response);
 			}
 				

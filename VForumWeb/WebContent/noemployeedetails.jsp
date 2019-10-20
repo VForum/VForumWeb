@@ -8,7 +8,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
-no files!!
+<body background="images/bg.jpg">
+<b>
+<center>
+no files found!!
+</center>
+</b>
 </body>
 </html>

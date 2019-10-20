@@ -22,15 +22,15 @@ public class TestRegisterEmployeeModelValidator {
 	}
 
 	@Test
-	void testValidString_positive() {
+	public void testValidString_positive() {
 		
-		boolean actual=validator.validString("sabbir");
+		boolean actual=validator.validString("sai");
 		assertEquals(true,actual);
     	}
 	@Test
-	void testValidString_negative() {
+	public void testValidString_negative() {
 		
-		boolean actual=validator.validString("sabbir111");
+		boolean actual=validator.validString("admin");
 		assertEquals(false,actual);
     	}
 	
